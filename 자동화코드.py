@@ -68,11 +68,11 @@ def makehwp(짧은문제이미지리스트,긴문제이미지리스트,문제):
         hwp.move_to_field("번호", idx=idx)
         hwp.insert_text('   ' +str(idx+1))
         hwp.move_to_field('출처',idx=idx)
-        hwp.insert_text(img.split("/")[-1].split()[0]+" "+img.split("/")[-1].split()[3])
+        hwp.insert_text(img.split("\\")[-1].split()[0]+" "+img.split("\\")[-1].split()[3])
         hwp.move_to_field("문제", idx=idx)
         hwp.insert_picture(img)
 
-    hwp.put_field_text('단원명',img.split("/")[-3])
+    hwp.put_field_text('단원명',img.split("\\")[-3])
 
     tbl_content2 = hwp2.get_into_nth_table(-1)
     hwp2.move_pos(tbl_content2.GetAnchorPos(1))
@@ -98,7 +98,7 @@ def makehwp(짧은문제이미지리스트,긴문제이미지리스트,문제):
     hwp3.insert_file('2.hwp')
     hwp3.MoveDocBegin()
     hwp3.Delete()
-    save_name = img.split("/")[-3]+' '+문제+'.hwp'
+    save_name = img.split("\\")[-3]+' '+문제+'.hwp'
     hwp3.save_as(save_name)
     hwp.quit()
     hwp2.quit()
@@ -115,7 +115,7 @@ for a in os.listdir(mathpath):
 
 for a in book:
     chapter = os.listdir(os.path.join(mathpath,a))
-    for b in chapter:
+    for b in  chapter:
         짧은문제 = []
         긴문제 = []
         for c in os.listdir(os.path.join(mathpath,a,b,'short_question')):
